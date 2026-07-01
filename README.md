@@ -1,100 +1,179 @@
-# Smart Door Lock System
+# 🔐 Smart Door Lock System
 
-## Overview
-
-The Smart Door Lock System is an Arduino Nano-based embedded security project designed to provide secure and reliable access control. The system combines RFID authentication, keypad password verification, and PIR motion detection to enhance security. A solenoid door lock is activated only after successful authentication, preventing unauthorized access.
+An embedded access control system developed using **Arduino Nano** that combines **RFID authentication**, **PIN-based verification**, and **PIR motion detection** to provide secure, reliable, and low-cost door access management. The system unlocks a solenoid lock only after successful authentication, enhancing security while remaining simple to deploy in homes, offices, laboratories, and educational institutions.
 
 ---
 
-## Features
+## 📌 Project Highlights
 
-- RFID card-based authentication
-- Password-based authentication using a keypad
-- Dual-layer security for improved protection
-- PIR sensor for motion detection
-- Solenoid lock control
-- LED and buzzer status indication
-- Low-cost embedded security solution
-
----
-
-## Components Used
-
-| Component | Quantity |
-|----------|----------|
-| Arduino Nano | 1 |
-| RFID RC522 Module | 1 |
-| RFID Card/Tag | 1 or more |
-| 4×4 Matrix Keypad | 1 |
-| PIR Motion Sensor | 1 |
-| Solenoid Door Lock | 1 |
-| Relay Module | 1 |
-| Buzzer | 1 |
-| LEDs | 2 |
-| Power Supply | 1 |
-| Jumper Wires | As required |
+- Dual authentication using RFID card and keypad PIN
+- Automatic solenoid door lock control
+- PIR-based motion sensing
+- Visual and audible access status indication
+- Protection against unauthorized access attempts
+- Modular design for future IoT integration
+- Cost-effective embedded security solution
 
 ---
 
-## Working Principle
-
-1. The system continuously waits for an RFID card or keypad input.
-2. When an RFID card is scanned, its UID is compared with stored authorized IDs.
-3. Alternatively, the user can enter a password using the keypad.
-4. If authentication is successful, the relay activates the solenoid lock to unlock the door.
-5. After a predefined delay, the door locks automatically.
-6. The PIR sensor detects nearby motion and can be used for additional monitoring or alerts.
-7. Invalid authentication attempts trigger a buzzer and access is denied.
-
----
-
-## Project Structure
+## 🏗 System Architecture
 
 ```
-Smart-Door-Lock-System/
+                 RFID Card
+                     │
+                     ▼
+              RFID RC522 Module
+                     │
+                     │
+Keypad ─────────────►│
+                     ▼
+              Arduino Nano
+          ┌──────────┼──────────┐
+          │          │          │
+          ▼          ▼          ▼
+      Solenoid     Buzzer      LEDs
+        Lock
+
+          ▲
+          │
+     PIR Motion Sensor
+```
+
+---
+
+## ⚙ Hardware Components
+
+| Component | Purpose |
+|-----------|---------|
+| Arduino Nano | Main controller |
+| RFID RC522 | RFID authentication |
+| RFID Tags | User identification |
+| 4×4 Matrix Keypad | Password entry |
+| PIR Sensor | Motion detection |
+| Solenoid Lock | Door locking mechanism |
+| Relay Module | Controls lock |
+| Buzzer | Security alert |
+| LEDs | Status indication |
+| Power Supply | System power |
+
+---
+
+## 🚀 Working Principle
+
+### Step 1 – Idle State
+The Arduino continuously monitors both the RFID reader and keypad while the door remains locked.
+
+### Step 2 – Authentication
+The user can either:
+
+- Scan an authorized RFID card
+- Enter the correct password using the keypad
+
+### Step 3 – Verification
+The controller compares the received credentials with the stored authorized data.
+
+### Step 4 – Access Control
+
+**Authorized User**
+
+- Unlocks the solenoid lock
+- Activates green status indication
+- Keeps the door unlocked for a predefined duration
+- Automatically locks the door again
+
+**Unauthorized User**
+
+- Door remains locked
+- Red LED turns ON
+- Buzzer generates an alert
+- Access request is rejected
+
+### Step 5 – Motion Detection
+
+The PIR sensor detects nearby movement and can be integrated for additional monitoring or security notifications.
+
+---
+
+## 📂 Repository Structure
+
+```
+Smart-Door-Lock-System
 │
 ├── Arduino_Code/
+│   └── Smart_Door_Lock.ino
+│
 ├── Circuit_Diagram/
+│
 ├── Components_List/
+│
 ├── Documentation/
+│
 ├── Images/
+│
 ├── README.md
 └── LICENSE
 ```
 
 ---
 
-## Applications
+## 📷 Project Images
 
-- Home Security
-- Office Access Control
-- Laboratory Security
-- Hostel Rooms
-- Smart Buildings
+Project images will be added here.
+
+| Prototype | Working Setup |
+|------------|---------------|
+| Coming Soon | Coming Soon |
 
 ---
 
-## Future Improvements
+## 💡 Applications
 
-- Wi-Fi monitoring using ESP32
+- Smart Home Security
+- Office Access Control
+- College Laboratories
+- Hostel Rooms
+- Server Rooms
+- Restricted Areas
+- Small Business Security
+
+---
+
+## 🔮 Future Enhancements
+
+- ESP32 Wi-Fi connectivity
 - Mobile application control
+- Cloud-based access logging
 - Fingerprint authentication
 - Face recognition
-- Cloud-based access logs
-- Temporary visitor passwords
+- Remote unlock functionality
+- Temporary visitor access
+- Telegram or Email alerts
 
 ---
 
-## Author
+## 🛠 Software
+
+- Arduino IDE
+- Embedded C / Arduino Framework
+
+---
+
+## 👨‍💻 Author
 
 **Obito Justin**
 
-Electronics and Communication Engineering (ECE)
+B.E. Electronics and Communication Engineering
 
-Knowledge Institute of Technology
+Knowledge Institute of Technology, Salem
 
 ---
 
-## License
+## ⭐ Support
+
+If you found this project useful, consider giving this repository a **⭐ Star**.
+
+---
+
+## 📄 License
 
 This project is licensed under the MIT License.
